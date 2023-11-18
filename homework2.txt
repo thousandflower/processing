@@ -1,12 +1,7 @@
-/** 
- * 移动鼠标改变每个圆的大小。 
- */
-
 void setup() {
-  size(720, 720); 
+  size(720, 720);
   noStroke();
   fill(255, 0, 180);
-  float maxDist = dist(0, 0, width, height);
 }
 
 void draw() {
@@ -14,11 +9,14 @@ void draw() {
   
   for (int i = 0; i <= width; i += 40) {
     for (int j = 0; j <= height; j += 40) {
-      float r = 50 - 0.2*dist(i, j, mouseX, mouseY); 
+      float r = 50 - 0.2 * dist(i, j, mouseX, mouseY);
+      
+      if (r < 10) {
         r = 10;
       }
-      fill(150, 200, 250);  
-      ellipse(i, j, r, r);  
+
+      fill(150, 200, 250);
+      ellipse(i, j, r, r);
     }
   }
 }
