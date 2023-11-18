@@ -1,5 +1,9 @@
+int totalFrames = 300;  // 总帧数
+int frameRate = 30;     // 帧率
+
 void setup() {
   size(720, 720);
+  frameRate(frameRate);
   noStroke();
   fill(255, 0, 180);
 }
@@ -7,10 +11,13 @@ void setup() {
 void draw() {
   background(255, 182, 193);
   
+  int currentFrame = frameCount;
+  float progress = (float) currentFrame / totalFrames;
+
   for (int i = 0; i <= width; i += 40) {
     for (int j = 0; j <= height; j += 40) {
       float r = 50 - 0.2 * dist(i, j, mouseX, mouseY);
-      
+
       if (r < 10) {
         r = 10;
       }
@@ -19,4 +26,16 @@ void draw() {
       ellipse(i, j, r, r);
     }
   }
+
+  // 保存帧
+  if (currentFrame <= totalFrames) {
+    String filename = "frame" + nf(currentFrame, 4) + ".png";
+    saveFrame(filename);
+  }
+
+  // 检查是否达到总帧数
+  if (currentFrame == totalFrames) {
+    exit();  // 当达到总帧数时退出应用程序
+  }
 }
+
