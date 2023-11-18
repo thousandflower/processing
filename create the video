@@ -1,0 +1,1 @@
+ffmpeg -framerate 30 -i "D:\Star\大二上\创意编程\homework\homework2/frame%04d.png" -c:v libx264 -r 30 -pix_fmt yuv420p output.mp4
