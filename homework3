@@ -1,0 +1,60 @@
+void setup() {
+  size(600, 600);
+  noLoop();
+}
+
+void draw() {
+  background(255); // 设置背景为白色
+  stroke(0); // 设置线条颜色为黑色
+  drawMondrianStyle(); // 绘制蒙德里安风格的图形
+  String filePath = "D:\\Star\\大二上\\创意编程\\homework\\homework3\\homework3.png"; 
+  save(filePath); // 保存画布内容为图片
+  noLoop(); // 保存图片后停止绘制，避免重复保存
+}
+
+void drawMondrianStyle() {
+  float cellSize = 50; // 单元格大小
+  drawLine();
+  
+  // 遍历每个单元格
+  for (float x = 0; x < width; x += cellSize) {
+    for (float y = 0; y < height; y += cellSize) {
+      float choice = random(1); // 随机决定画线还是填充色
+      
+      if (choice > 0.5) {
+        drawRect(x, y, cellSize); // 绘制矩形
+      }
+    }
+  }
+}
+
+void drawLine() {
+  for (int i = 0; i <= width; i += random(100)) {
+    float n = random(30);
+    strokeWeight(n);
+    line(i, random(600), i, random(600));
+  }
+  for (int j = 0; j <= height; j += random(100)) {
+    float n = random(30);
+    strokeWeight(n);
+    line(random(600), j, random(600), j);
+  }
+}
+
+void drawRect(float x, float y, float size) {
+  float randColor = random(1); // 随机决定颜色
+  color shapeColor;
+  
+  // 根据随机值选择红、黄、蓝中的一种颜色
+  if (randColor < 0.33) {
+    shapeColor = color(255, 0, 0); // 红色
+  } else if (randColor < 0.66) {
+    shapeColor = color(255, 255, 0); // 黄色
+  } else {
+    shapeColor = color(0, 0, 255); // 蓝色
+  }
+  
+  fill(shapeColor); // 使用选定的颜色填充
+  noStroke();
+  rect(x, y, size, size); // 矩形
+}
