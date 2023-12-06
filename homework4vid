@@ -1,0 +1,1 @@
+ffmpeg -r 30 -i "D:/Star/大二上/创意编程/homework/homework4/frame/%06d.png" -c:v libx264 -vf "fps=30,format=yuv420p" -pix_fmt yuv420p "D:/Star/大二上/创意编程/homework/homework4/output.mp4"
