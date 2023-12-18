@@ -48,7 +48,7 @@ void draw() {
     if (record) {
    timestamp = year() + nf(month(), 2) + nf(day(), 2) + "-"  + nf(hour(), 2) + nf(minute(), 2) + nf(second(), 2);
  beginRecord("nervoussystem.obj.OBJExport", "C:/Users/30957/Desktop/" + timestamp + ".obj");
-/[表情]ve("C:\\Users\\30957\\Desktop\\12\\"+ frameCount + ".png");
+//save("C:\\Users\\30957\\Desktop\\12\\"+ frameCount + ".png");
   }
   }
   cam.beginHUD();
